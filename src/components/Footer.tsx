@@ -7,15 +7,14 @@ export const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo & Description */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <QrCode className="w-5 h-5 text-primary-foreground" />
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <QrCode className="w-4 h-4 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold text-foreground">TipQR</span>
+              <span className="text-xl font-semibold text-foreground">Chai</span>
             </div>
-            <p className="text-muted-foreground mb-4 max-w-md">
-              Revolutionizing the tipping experience with secure, instant QR-based payments. 
-              Built with modern banking standards and designed for the future of contactless transactions.
+            <p className="text-muted-foreground mb-4 max-w-md text-sm leading-relaxed">
+              Simple, secure tip payments. Scan, tip, done.
             </p>
             <div className="flex space-x-4">
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
