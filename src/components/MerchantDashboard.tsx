@@ -9,10 +9,13 @@ import merchantDashboardImage from "@/assets/merchant-dashboard.jpg";
 export const MerchantDashboard = () => {
   const [qrGenerated, setQrGenerated] = useState(false);
   const [merchantName, setMerchantName] = useState("");
+  const [qrPattern, setQrPattern] = useState<boolean[] | null>(null);
 
   const generateQR = () => {
     if (!merchantName.trim()) return;
     setQrGenerated(true);
+    const pattern = Array.from({ length: 64 }, () => Math.random() > 0.5);
+    setQrPattern(pattern);
   };
 
   const mockStats = [
@@ -57,10 +60,10 @@ export const MerchantDashboard = () => {
                   {/* Mock QR Code */}
                   <div className="w-48 h-48 mx-auto bg-background border-2 border-border rounded-lg p-4 flex items-center justify-center">
                     <div className="grid grid-cols-8 gap-1">
-                      {Array.from({ length: 64 }).map((_, i) => (
+                      {qrPattern?.map((isDark, i) => (
                         <div
                           key={i}
-                          className={`w-2 h-2 ${Math.random() > 0.5 ? 'bg-foreground' : 'bg-background'}`}
+                          className={`w-2 h-2 ${isDark ? 'bg-foreground' : 'bg-background'}`}
                         />
                       ))}
                     </div>
@@ -120,6 +123,8 @@ export const MerchantDashboard = () => {
                 src={merchantDashboardImage} 
                 alt="Merchant Dashboard Interface"
                 className="w-full h-auto"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="mt-4 text-center">

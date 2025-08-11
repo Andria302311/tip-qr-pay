@@ -34,6 +34,7 @@ export const HeroSection = () => {
               src={heroImage} 
               alt="QR Code Scanner Interface"
               className="w-full h-auto"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
           </div>

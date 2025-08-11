@@ -6,9 +6,16 @@ import { Label } from "@/components/ui/label";
 import { Camera, Scan, DollarSign, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+interface MerchantInfo {
+  name: string;
+  id: string;
+  account: string;
+  currency: string;
+}
+
 export const QRScanner = () => {
   const [isScanning, setIsScanning] = useState(false);
-  const [merchantInfo, setMerchantInfo] = useState<any>(null);
+  const [merchantInfo, setMerchantInfo] = useState<MerchantInfo | null>(null);
   const [tipAmount, setTipAmount] = useState("");
   const { toast } = useToast();
 
@@ -30,7 +37,9 @@ export const QRScanner = () => {
   };
 
   const handlePayment = () => {
-    if (!tipAmount || parseFloat(tipAmount) <= 0) {
+    const normalized = tipAmount.replace(",", ".").trim();
+    const amount = Number(normalized);
+    if (!normalized || Number.isNaN(amount) || !Number.isFinite(amount) || amount <= 0) {
       toast({
         title: "Invalid Amount",
         description: "Please enter a valid tip amount",
@@ -41,7 +50,7 @@ export const QRScanner = () => {
 
     toast({
       title: "Payment Initiated",
-      description: `Tip of ${tipAmount} ${merchantInfo?.currency} sent to ${merchantInfo?.name}`,
+      description: `Tip of ${amount.toFixed(2)} ${merchantInfo?.currency} sent to ${merchantInfo?.name}`,
     });
     
     // Reset state
@@ -110,7 +119,8 @@ export const QRScanner = () => {
                 <Label htmlFor="tipAmount">Tip Amount ({merchantInfo.currency})</Label>
                 <Input
                   id="tipAmount"
-                  type="number"
+                  type="text"
+                  inputMode="decimal"
                   placeholder="0.00"
                   value={tipAmount}
                   onChange={(e) => setTipAmount(e.target.value)}
