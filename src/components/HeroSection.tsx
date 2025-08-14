@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { QrCode, Smartphone, CreditCard } from "lucide-react";
-import heroImage from "@/assets/hero-qr-scanner.jpg";
+
 
 export const HeroSection = () => {
   return (
@@ -27,18 +27,6 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* Hero Image */}
-        <div className="relative max-w-4xl mx-auto mb-16">
-          <div className="relative rounded-2xl overflow-hidden shadow-card">
-            <img 
-              src={heroImage} 
-              alt="QR Code Scanner Interface"
-              className="w-full h-auto"
-              decoding="async"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
-          </div>
-        </div>
 
         {/* Feature Cards */}
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">

@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { QrCode, Download, Eye, TrendingUp, DollarSign, Users } from "lucide-react";
-import merchantDashboardImage from "@/assets/merchant-dashboard.jpg";
+
 
 export const MerchantDashboard = () => {
   const [qrGenerated, setQrGenerated] = useState(false);
@@ -114,26 +114,6 @@ export const MerchantDashboard = () => {
           </Card>
         </div>
 
-        {/* Dashboard Preview Image */}
-        <div className="mt-12">
-          <Card className="p-6 bg-gradient-card border-0 shadow-card">
-            <h3 className="text-xl font-semibold mb-4">Full Dashboard Experience</h3>
-            <div className="rounded-lg overflow-hidden">
-              <img 
-                src={merchantDashboardImage} 
-                alt="Merchant Dashboard Interface"
-                className="w-full h-auto"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="mt-4 text-center">
-              <Button variant="hero">
-                Access Full Dashboard
-              </Button>
-            </div>
-          </Card>
-        </div>
       </div>
     </section>
   );
